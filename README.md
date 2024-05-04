@@ -7,7 +7,11 @@ This feature works efficiently and can be used to recursively update other recor
 
 However, I needed a script that could log all the changes to the WAN-IP and, optionally, perform the Cloudflare DNS update as well.
 This script is the result of that requirement.
-<br /><br />
+
+
+## General Notes for the Script:
+1. The script requires the following policies: read, write, test, and policy.
+2. After adding the script and populating the variables (details provided below), you need to add it to the Scheduler and set it for execution every 5 minutes, or any interval that suits your needs.
 
 # Setup - Variables Required in the Script
   (Further details provided below)
