@@ -48,7 +48,7 @@ Notes:
 2. This is for *Type A* DNS Record, if you need another type adjust the URL in the **curl** command.
 3. The `| jq` at the end of the **curl** command is used to present the results in a more readable format. If you don’t have **jq** installed, you can simply remove the final pipe and parse the results manually.
 4. Before launching the **curl** commands below, populate the following variables (italic) and copy/paste them into bash too. Alternatively, you can manually substitute the variables directly in the curl command.
-5. In the field *"id"* (of *"result"*), you'll find the ID you are looking for.
+5. In the field *"id"* (of *"result"*), you'll find the DNS Record ID you are looking for.
 
 ### Getting the specific Type A DNS Record ID
 
