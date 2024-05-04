@@ -16,14 +16,14 @@ This script is the result of that requirement.
 # Setup - Variables Required in the Script
   (Further details provided below)
 
-* `CFAPIAUTHEMAIL` - This is the email address associated with your Cloudflare account. It’s required for API authentication.
-* `CFAPIDNSRCNAME` - The domain record (hostname) at Cloudflare you want to update. (e.g. "mywanip.domain.com").
+* `CFAPIAUTHEMAIL` - The email associated with your Cloudflare account (required for API authentication).
+* `CFAPIDNSRCNAME` - The dns record at CF you want to update (e.g. "mywanip.domain.com").
 * `CFAPIDNSZONEID` - The Cloudflare DNS Zone ID. You can locate this in your Cloudflare dashboard.
 * `CFAPIDNSRCRDID` - The Cloudflare DNS Record ID. More details on this are provided below.
 * `CFAPIAUTHTOKEN` - The Cloudflare AuthKey/Token. You can create it in your Cloudflare dashboard.
 <br /><br /><br />
 
-## Creating an API Token (`CFAPIAUTHTOKEN`)
+## Creating a Cloudflare API Auth/Key **Token** (`CFAPIAUTHTOKEN`)
 
 To create the Cloudflare AuthKey/Token (`CFAPIAUTHTOKEN`) in the Cloudflare dashboard, follow these steps:
 
