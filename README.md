@@ -1,7 +1,6 @@
 # Mikrotik Cloudflare DNS Updater Script (RouterOS v7)
 
-This script for [Mikrotik](https://mikrotik.com/) RouterOS v7 routers
-that updates a Cloudflare DNS record when the router's public IP address has changed.
+Script for [Mikrotik](https://mikrotik.com/) RouterOS v7 routers that updates a Cloudflare DNS record when the router's public IP address has changed.
 
 Note: Mikrotik RouterOS already includes a [IP Cloud DDNS](https://wiki.mikrotik.com/wiki/Manual:IP/Cloud#DDNS) feature
 that works great and can be used to recursively update (using `CNAME`) records that point to the Mikrotik generated
