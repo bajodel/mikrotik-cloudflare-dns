@@ -1,45 +1,45 @@
-## ---- Configuration/Start  ----------------------------------------------------------------
+## ---- Configuration/Start  -----
 
-# Cloudflare parameters (Email, DnsHost, ZoneID, RecordID, Token/AuthKey)
-:local CFAPIAUTHEMAIL "mymail@mydomain.com"
-:local CFAPIDNSRCNAME "mywanip.domain.com"
-:local CFAPIDNSZONEID "_____Cloudflare_Dns_Zone_ID_____"
-:local CFAPIDNSRCRDID "____Cloudflare_Dns_Record_ID____"
-:local CFAPIAUTHTOKEN "___Cloudflare__Auth_Key_Token___"
+# Cloudflare parameters (see README.md https://github.com/bajodel/mikrotik-cloudflare-dns )
+:local CfApiAuthEmail "mymail@mydomain.com"
+:local CfApiDnsRcName "mywanip.domain.com"
+:local CfApiDnsZoneID "__Cloudflare_Dns_Zone_ID____"
+:local CfApiDnsRcrdID "__Cloudflare_Dns_Record_ID__"
+:local CfApiAuthToken "__Cloudflare_Auth_Key_Token_"
   
-# if [CFAPIUPDENABLE false] it will only monitor/log WanIP changes (no Cloudflare update)
-:local CFAPIUPDENABLE true;
+# if [false] it will only monitor/log WanIP changes, if [true] it will enable Cloudflare DNS update
+:local CfApiUpdEnable true;
 
 # install DigiCert-Root-CA on your board if you want to enable "check-certificate"
-:local CFAPICERTCHECK false;
+:local CfApiCertCheck false;
 
-## ---- Configuration/End  ------------------------------------------------------------------
+## ---- Configuration/End  ----
 
-:global WANIP4CUR
+:global WanIP4Cur
 :do {
 :local result [:tool fetch url="http://checkip.amazonaws.com/" as-value output=user]
 :if ($result->"status" = "finished") do={
-  :local WANIP4NEW [:pick ($result->"data") 0 ( [ :len ($result->"data") ] -1 )]
-  :if ($WANIP4NEW != $WANIP4CUR) do={
-    :if ([ :len ($WANIP4NEW) ] > 4) do={
+  :local WanIP4New [:pick ($result->"data") 0 ( [ :len ($result->"data") ] -1 )]
+  :if ($WanIP4New != $WanIP4Cur) do={
+    :if ([ :len ($WanIP4New) ] > 4) do={
       # wan ip changed (result not empty and != stored ip)
-      :log warning "[script] IP wan change detected - New IP: $WANIP4NEW - Old IP: $WANIP4CUR";
+      :log warning "[script] IP wan change detected - New IP: $WanIP4New - Old IP: $WanIP4Cur";
       # If not in "Monitor Only" state -> update Cloudflare DNS
-      :if ($CFAPIUPDENABLE = true) do={
+      :if ($CfApiUpdEnable = true) do={
       # create API update url for DNS Zone/Record
-      :local url "https://api.cloudflare.com/client/v4/zones/$CFAPIDNSZONEID/dns_records/$CFAPIDNSRCRDID/"
+      :local url "https://api.cloudflare.com/client/v4/zones/$CfApiDnsZoneID/dns_records/$CfApiDnsRcrdID/"
       # evaluating "check-certificate" (yes/no)
-      :local CHECKYESNO
-      :if ($CFAPICERTCHECK = true) do={ :set CHECKYESNO "yes"; } else { :set CHECKYESNO "no"; }
+      :local CheckYesNo
+      :if ($CfApiCertCheck = true) do={ :set CheckYesNo "yes"; } else { :set CheckYesNo "no"; }
       # updating the DNS Record
-      :local cfapi [/tool fetch http-method=put mode=https url=$url check-certificate=$CHECKYESNO output=user as-value \
-      http-header-field="X-Auth-Email: $CFAPIAUTHEMAIL,Authorization: Bearer $CFAPIAUTHTOKEN,Content-Type: application/json" \
-      http-data="{\"type\":\"A\",\"name\":\"$CFAPIDNSRCNAME\",\"content\":\"$WANIP4NEW\",\"ttl\":60,\"proxied\":false}"]
+      :local cfapi [/tool fetch http-method=put mode=https url=$url check-certificate=$CheckYesNo output=user as-value \
+      http-header-field="X-Auth-Email: $CfApiAuthEmail,Authorization: Bearer $CfApiAuthToken,Content-Type: application/json" \
+      http-data="{\"type\":\"A\",\"name\":\"$CfApiDnsRcName\",\"content\":\"$WanIP4New\",\"ttl\":60,\"proxied\":false}"]
       # log message
-      :log warning "[script] Updated Cloudflare DNS record [ $CFAPIDNSRCNAME -> $WANIP4NEW ]";
+      :log warning "[script] Updated Cloudflare DNS record [ $CfApiDnsRcName -> $WanIP4New ]";
       }
       # update stored global variable
-      :set WANIP4CUR $WANIP4NEW
+      :set WanIP4Cur $WanIP4New
     }
   }
 }
