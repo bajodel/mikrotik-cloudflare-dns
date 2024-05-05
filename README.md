@@ -11,7 +11,7 @@ However, I needed a script that could log changes to the WAN-IP and, optionally,
 # Script Setup - Variables required in the RouterOS script
 
 * `CfApiAuthEmail` - The email associated with your Cloudflare account (required for API authentication).
-* `CfApiDnsRcName` - The dns record at CF you want to update (e.g. "mywanip.domain.com").
+* `CfApiDnsRcName` - The dns record *(Type A)* at CF you want to update (e.g. "mywanip.domain.com").
 * `CfApiDnsZoneID` - The Cloudflare DNS Zone ID. You can locate this in your Cloudflare dashboard.
 * `CfApiDnsRcrdID` - The Cloudflare DNS Record ID. More details on this are provided below.
 * `CfApiAuthToken` - The Cloudflare AuthKey/Token. You can create it in your Cloudflare dashboard.
@@ -42,7 +42,7 @@ You'll find it on the right in the "API Zone ID" section.
 ## Getting the Cloudflare DNS Record ID (`CfApiDnsRcrdID`) using a linux shell
 
 1. **This process needs to be done only once to obtain the specific Record ID.**
-2. This is for *Type A* DNS Record, if you need another type adjust the URL in the **curl** command.
+2. This is for *Type A* DNS Record, if you need another type adjust the URL in the **curl** command (and in the RouterOS script as well).
 3. The `| jq` at the end of the **curl** command is used to present the results in a more readable format. If you don’t have **jq** installed, you can simply remove the final pipe and parse the results manually.
 4. Before launching the **curl** commands below, populate the 4 initial variables and paste them into the shell too (or set values directly in the curl command).
 5. In the field *"id"* (of *"result"*), you'll find the DNS Record ID you are looking for.
