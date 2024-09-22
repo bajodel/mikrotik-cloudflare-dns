@@ -18,6 +18,7 @@ However, I needed a script that could log changes to the WAN-IP and, optionally,
 Notes:<br />
 1. RouterOS script policies: read, write, test, and policy.<br />
 2. Remember to add a Scheduler that start the script every 5 minutes, or any interval that suits your needs.<br />
+Example scheduler config ```/system script run "CF DDNS"```
 <br /><br />
 
 ## Creating a Cloudflare API Auth/Key **Token** (`CfApiAuthToken`)
