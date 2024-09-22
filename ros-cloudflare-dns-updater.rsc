@@ -1,7 +1,6 @@
 ## ---- Configuration/Start  -----
 
 # Cloudflare parameters (see README.md https://github.com/bajodel/mikrotik-cloudflare-dns )
-:local CfApiAuthEmail "mymail@mydomain.com"
 :local CfApiDnsRcName "mywanip.domain.com"
 :local CfApiDnsZoneID "__Cloudflare_Dns_Zone_ID____"
 :local CfApiDnsRcrdID "__Cloudflare_Dns_Record_ID__"
@@ -33,7 +32,7 @@
       :if ($CfApiCertCheck = true) do={ :set CheckYesNo "yes"; } else { :set CheckYesNo "no"; }
       # updating the DNS Record
       :local cfapi [/tool fetch http-method=put mode=https url=$url check-certificate=$CheckYesNo output=user as-value \
-      http-header-field="X-Auth-Email: $CfApiAuthEmail,Authorization: Bearer $CfApiAuthToken,Content-Type: application/json" \
+      http-header-field="Authorization: Bearer $CfApiAuthToken,Content-Type: application/json" \
       http-data="{\"type\":\"A\",\"name\":\"$CfApiDnsRcName\",\"content\":\"$WanIP4New\",\"ttl\":60,\"proxied\":false}"]
       # log message
       :log warning "[script] Updated Cloudflare DNS record [ $CfApiDnsRcName -> $WanIP4New ]";
