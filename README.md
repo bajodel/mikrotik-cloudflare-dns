@@ -10,7 +10,6 @@ However, I needed a script that could log changes to the WAN-IP and, optionally,
 
 # Script Setup - Variables required in the RouterOS script
 
-* `CfApiAuthEmail` - The email associated with your Cloudflare account (required for API authentication).
 * `CfApiDnsRcName` - The dns record *(Type A)* at CF you want to update (e.g. "mywanip.domain.com").
 * `CfApiDnsZoneID` - The Cloudflare DNS Zone ID. You can locate this in your Cloudflare dashboard.
 * `CfApiDnsRcrdID` - The Cloudflare DNS Record ID. More details on this are provided below.
@@ -49,12 +48,10 @@ You'll find it on the right in the "API Zone ID" section.
 
 ```
 CfApiDnsRcName="mywanip.domain.com"
-CfApiAuthEmail="mymail@mydomain.com"
 CfApiAuthToken="_Cloudflare_Auth_Key_Token_"
 CfApiDnsZoneID="_Cloudflare_Dns_Zone_ID_"
 
 curl -s -X GET "https://api.cloudflare.com/client/v4/zones/$CfApiDnsZoneID/dns_records?type=A&name=$CfApiDnsRcName" \
-	-H "X-Auth-Email: $CfApiAuthEmail" \
 	-H "Authorization: Bearer $CfApiAuthToken" \
 	-H "Content-Type: application/json" | jq
 ```
