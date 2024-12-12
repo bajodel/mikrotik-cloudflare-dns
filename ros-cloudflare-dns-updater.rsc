@@ -1,11 +1,11 @@
 ## ---- Configuration/Start  -----
 
 # Cloudflare parameters (see README.md https://github.com/bajodel/mikrotik-cloudflare-dns )
-#(optional)# :local CfApiAuthEmail "mymail@mydomain.com"
 :local CfApiDnsRcName "mywanip.domain.com"
 :local CfApiDnsZoneID "__Cloudflare_Dns_Zone_ID____"
 :local CfApiDnsRcrdID "__Cloudflare_Dns_Record_ID__"
 :local CfApiAuthToken "__Cloudflare_Auth_Key_Token_"
+#(optional)# :local CfApiAuthEmail "mymail@mydomain.com"
   
 # if [false] it will only monitor/log WanIP changes, if [true] it will enable Cloudflare DNS update
 :local CfApiUpdEnable true;
