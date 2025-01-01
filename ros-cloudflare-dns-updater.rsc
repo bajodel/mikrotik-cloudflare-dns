@@ -3,7 +3,7 @@
 ## ---- Configuration/Start  -----
 
 # Define here single/multiple Dns Records (FQDNs) with their Zone IDs, Record IDs, and AuthTokens
-# (hint: populate at least the first (single record to update), or uncomment the second one and/or create more as needed)
+# (hint: populate at least the first (single record to update), uncomment the second one or create more as needed)
 :local ParamVect {
                   "_____mywanip1_domain_com_____"={
       "DnsZoneID"="__Cloudflare_Dns_Zone_ID1____";
@@ -18,12 +18,12 @@
 }
 
 # [default: false] enable verbose (debug) log messages, by default only changes will be logged
-:local VerboseLog true
+:local VerboseLog false
   
 # [default: false] enable TestMode -> it will only monitor/log Wan IPv4 changes (no Cloudflare DNS update)
 :local TestMode false
 
-# [default: false] enable certificate validation for Cloudflare API calls (install RootCA used by CF before enable it)
+# [default: false] enable certificate validation for Cloudflare API calls (but before install RootCA used by CF)
 :local CertCheck false
 
 ## ---- Configuration/End  ----
