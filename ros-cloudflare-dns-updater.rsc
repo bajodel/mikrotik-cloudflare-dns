@@ -8,7 +8,7 @@
                   "_____mywanip1_domain_com_____"={
       "DnsZoneID"="__Cloudflare_Dns_Zone_ID1____";
       "DnsRcrdID"="__Cloudflare_Dns_Record_ID1__";
-      "AuthToken"="_Cloudflare_Auth_Key_Token1_";
+      "AuthToken"="_Cloudflare_Auth_Key_Token_1_";
   };
 #                 "_____mywanip2_domain_com_____"={
 #     "DnsZoneID"="__Cloudflare_Dns_Zone_ID2____";
