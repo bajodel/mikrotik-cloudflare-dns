@@ -65,8 +65,8 @@
           http-data="{\"type\":\"A\",\"name\":\"$DnsRcName\",\"content\":\"$WanIP4New\",\"ttl\":60,\"proxied\":false}"]
           if ($CfApiResult->"status" = "finished") do={
             # log success message (log <warning> used just to make it stand out in logs)
-            :log warning "[script] Updated Cloudflare DNS record for <$DnsRcName> to $WanIP4New ]"
-          } else={ :log error "[script] Error occurred updating Cloudflare DNS record for <$DnsRcName> to $WanIP4New ]" }
+            :log warning "[script] Updated Cloudflare DNS record for <$DnsRcName> to $WanIP4New"
+          } else={ :log error "[script] Error occurred updating Cloudflare DNS record for <$DnsRcName> to $WanIP4New" }
           # pause a little bit before the next one
           :delay 1
       } }
