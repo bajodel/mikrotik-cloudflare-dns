@@ -12,7 +12,7 @@ However, I needed a script that could log changes to the WAN-IP and, optionally,
 
 # Script Setup - Variables required in the RouterOS script
 
-At the top of the script, there is a Vector of Parameters definition (`ParamVect`) where you can define
+At the top of the script, there is a parameters definition Vector (`ParamVect`) where you can define
 if you want to update a single Dns Record or multiple ones by populating one or more stanzas.
 
 Each of them must have their own:
