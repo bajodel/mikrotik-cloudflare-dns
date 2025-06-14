@@ -1,4 +1,4 @@
-##  <<  For parameters' details see README.md @ https://github.com/bajodel/mikrotik-cloudflare-dns  >>
+##  <<  For parameters'details see README.md @ https://github.com/bajodel/mikrotik-cloudflare-dns  >>
 
 ## ---- Configuration/Start  -----
 
