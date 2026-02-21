@@ -21,7 +21,11 @@ Each of them must have their own:
 * &nbsp;&nbsp;&nbsp;`DnsRcrdID`&nbsp;&nbsp; - The Cloudflare DNS Record ID. More details on this are provided below.
 * &nbsp;&nbsp;&nbsp;`AuthToken`&nbsp;&nbsp; - The Cloudflare AuthKey/Token. You can create it in your Cloudflare dashboard.
 <br /><br />
-Notes:<br />
+> [!NOTE]
+>  Device-mode configuration is factory pre-installed to routers and set to home (for devices with MikroTik RouterOS v7.17 or later). This script requires you to enable the fetch tool.
+```
+/system/device-mode/update fetch=yes
+```
 1. RouterOS script policies: read, write, test, and policy.<br />
 2. Remember to add a Scheduler that starts the script every 5 minutes, or any interval that suits your needs.
 <br />&nbsp;&nbsp;&nbsp;*(e.g. /system scheduler add interval=5m name=ddns-update on-event="/system script run ddns-update")*<br />
