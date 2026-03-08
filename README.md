@@ -9,15 +9,17 @@ This feature works great and can be used to recursively update other records (us
 
 However, I needed a script that could log changes to the WAN-IP and, optionally, also perform the Cloudflare DNS update.
 
+<br />
+
 # Recent changes:<br />
 2026.03.08 - Added automatic meaningful comment in Cloudflare Records:<br />
   - Timestamp of the last update
   - System identity of the device as updated-by
-  <br />e.g.:
-```
-    2026.03.08-08:20 by MyFirewall
-```
+  <br /><br />
+  Example screenshot:<br />
+![Cloudflare DNS record comment](cf-record-comment.png)
 
+<br /><br />
 # Script Setup - Variables required in the RouterOS script
 
 At the top of the script, there is a parameters definition Vector (`ParamVect`) where you can define
