@@ -9,9 +9,14 @@ This feature works great and can be used to recursively update other records (us
 
 However, I needed a script that could log changes to the WAN-IP and, optionally, also perform the Cloudflare DNS update.
 
-Recent changes:<br />
-2026.03.08 - Added automatic meaningful comment to updated CF DNS record (Date/time of the last update, System identity name of the device as "updated by")
-<br /><br />
+# Recent changes:<br />
+2026.03.08 - Added automatic meaningful comment in Cloudflare Records:<br />
+  - Timestamp of the last update
+  - System identity of the device as updated-by
+  <br />e.g.:
+```
+    2026.03.08-08:20 by MyFirewall
+```
 
 # Script Setup - Variables required in the RouterOS script
 
@@ -25,7 +30,8 @@ Each of them must have their own:
 * &nbsp;&nbsp;&nbsp;`AuthToken`&nbsp;&nbsp; - The Cloudflare AuthKey/Token. You can create it in your Cloudflare dashboard.
 <br /><br />
 > [!NOTE]
->  [Device-mode configuration](https://help.mikrotik.com/docs/spaces/ROS/pages/93749258/Device-mode) is factory pre-installed to routers and set to home (for devices with MikroTik RouterOS v7.17 or later). This script requires you to enable the fetch tool.
+>  [Device-mode configuration](https://help.mikrotik.com/docs/spaces/ROS/pages/93749258/Device-mode) is factory pre-installed to routers and set to home (for devices with MikroTik RouterOS v7.17 or later).<br />
+This script requires you to enable the fetch tool:
 ```
 /system/device-mode/update fetch=yes
 ```
