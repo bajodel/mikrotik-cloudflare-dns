@@ -12,12 +12,18 @@ However, I needed a script that could log changes to the WAN-IP and, optionally,
 <br />
 
 # Recent changes:<br />
-2026.03.08 - Added automatic meaningful comment in Cloudflare Records:<br />
+- 2026.03.08 - Added automatic meaningful comment in Cloudflare Records:<br />
   - Timestamp of the last update
   - System identity of the device as updated-by
   <br /><br />
   Example screenshot:<br />
 ![Cloudflare DNS record comment](cf-record-comment.png)
+<br /><br />
+- 2026.03.24 - Improved Wan IP retrieval logic and validation<br />
+  - Fallback IP check services (`api.ipify.org`, `ifconfig.me`) if primary (`checkip.amazonaws.com`) is unreachable
+  - IP validation logic - replaced fragile bitwise mask with clean `:toip` validation
+  - Configurable per-record `TTL` and `Proxied` parameters in `ParamVect` (defaults: `60` / `false`)
+  - Per-record error handling - partial failures will be retried on the next scheduled run
 
 <br /><br />
 # Script Setup - Variables required in the RouterOS script
