@@ -36,6 +36,8 @@ Each of them must have their own:
 * &nbsp;&nbsp;&nbsp;`DnsZoneID`&nbsp;&nbsp; - The Cloudflare DNS Zone ID. You can locate this in your Cloudflare dashboard.
 * &nbsp;&nbsp;&nbsp;`DnsRcrdID`&nbsp;&nbsp; - The Cloudflare DNS Record ID. More details on this are provided below.
 * &nbsp;&nbsp;&nbsp;`AuthToken`&nbsp;&nbsp; - The Cloudflare AuthKey/Token. You can create it in your Cloudflare dashboard.
+* &nbsp;&nbsp;&nbsp;`TTL`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - *(optional)* DNS record TTL in seconds (default: `60`).
+* &nbsp;&nbsp;&nbsp;`Proxied`&nbsp;&nbsp;&nbsp;&nbsp; - *(optional)* Enable Cloudflare proxy, `"true"` or `"false"` (default: `"false"`).
 <br /><br />
 > [!NOTE]
 >  [Device-mode configuration](https://help.mikrotik.com/docs/spaces/ROS/pages/93749258/Device-mode) is factory pre-installed to routers and set to home (for devices with MikroTik RouterOS v7.17 or later).<br />
